@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Réservation</title>
+</head>
+<body>
+    <div data-th-text="${'Réservation Court '+court}">...</div>
+    <br/>
+    <div>
+        <table border="1">
+            <tr>
+                <th> Id </th>
+                <th> Jour </th>
+                <th> Début </th>
+                <th> Fin </th>
+                <th> Joueur </th>
+            </tr>
+            <tr th:each ="booking : ${bookings}">
+                <td th:utext="${booking.id}">...</td>
+                <td th:utext="${booking.jour}">...</td>
+                <td th:utext="${booking.heureDebut}">...</td>
+                <td th:utext="${booking.heureFin}">...</td>
+                <td th:utext="${booking.playerName}">...</td>
+                <td>
+                    <form action="#" th:action="@{http://localhost:8083/removeBooking/} + ${{booking}}" th:method="delete">
+                        <button type="submit">ANNULER</button>
+                    </form>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <br/><br/>
+    <form action="#" th:action="@{http://localhost:8083/showAddBooking/} + ${{court}}" th:method="put">
+        <button type="submit">Nouvelle réservation</button>
+    </form>
+    <a href="http://localhost:8050/courtList">Retour à la liste des courts</a>
+
+</body>
+</html>

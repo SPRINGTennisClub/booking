@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: booking-service
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  cloud:
+    config:
+      uri: http://localhost:8888

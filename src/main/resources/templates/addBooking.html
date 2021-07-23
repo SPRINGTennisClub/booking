@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouvelle Réservation</title>
+</head>
+<body>
+<h1>Réservation</h1>
+
+<form th:action="@{/addBooking}"
+      th:object="${booking}" method="POST">
+    <ul>
+        <li>
+            Court n°:
+            <input type="text" th:field="*{numCourt}"/>
+            <br/>
+        </li>
+        <li>
+            Jour:
+            <select type="text" th:field="*{jour}">
+                <option value="">--</option>
+                <option th:each="jour : ${jours}"
+                        th:value="${jour}"
+                        th:text="${jour}">
+                </option>
+                </select>
+            <br/>
+        </li>
+        <li>
+            Heure début:
+            <input type="text" th:field="*{heureDebut}"/>
+            <br/>
+        </li>
+        <li>
+            Heure fin:
+            <input type="text" th:field="*{heureFin}"/>
+            <br/>
+        </li>
+        <li>
+            Nom du Joueur:
+            <input type="text" th:field="*{playerName}"/>
+            <br/>
+        </li>
+        <input type="submit" value="ajouter"/>
+    </ul>
+</form>
+</body>
+</html>
